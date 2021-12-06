@@ -142,7 +142,11 @@ public class BanHangFromms extends javax.swing.JPanel {
             btnHD[i].setPreferredSize(new Dimension(100, 100));
             PBody2.add(btnHD[i]);
             btnHD[i].addActionListener((ActionEvent ae) -> {
-                   System.out.println(hoaDon.getMaHd());
+                f=1;
+                HoaDon h = getFrom(hoaDon.getMaHd(), hoaDon.getTrangThai());
+                Setfrom(h);
+                LoadDTableHDCT(hoaDon.getMaHd());
+                System.out.println(hoaDon.getMaHd());
             });
             i++;
         }
@@ -151,14 +155,26 @@ public class BanHangFromms extends javax.swing.JPanel {
 
     public void addArrayButtonSP() {
         row = list.size();
+        int i = 0;
         btnhh = new JButton[row];
-        for (int i = 0; i < row; i++) {
-            btnhh[i] = createButton(list.get(i).getMaCTS() + "");
-            btnhh[i].setText(getTieuDe(list.get(i).getMaSach()));
+        for (CTSach cTSach : list) {
+            btnhh[i] = createButton(cTSach.getMaCTS() + "");
+            btnhh[i].setText(getTieuDe(cTSach.getMaSach()));
             btnhh[i].setPreferredSize(new Dimension(100, 100));
+            btnhh[i].setIcon(utils.XImage.readLogo(cTSach.getHinh()));
             Pbody3.add(btnhh[i]);
+            btnhh[i].addActionListener((ActionEvent ae) -> {
+                if (f < 0) {
+                    utils.MsgBox.alert(this, "Mời bạn chọn hóa đơn");
+                } else {
+//                    idhang = i + IconIndex1;
+//                    list = CTSD.selecALL();
+//                    checkh();
 
-        }
+                }
+             });
+          }
+        i++;
     }
 
     public JButton createButton(String buttonName) {
@@ -309,12 +325,12 @@ public class BanHangFromms extends javax.swing.JPanel {
         return ct;
     }
 
-    void getSLTT(int i) {
+    void getSLTT(int maHD) {
         listCT = ctD.selecALL();
         a = 0;
         b = 0;
         for (CTHoaDon cT : listCT) {
-            if (listHD.get(i).getMaHd() == cT.getMaHD()) {
+            if (maHD == cT.getMaHD()) {
                 a = cT.getSoLuong() + a;
                 b = (float) (cT.getGiaBan() + b);
             }
@@ -322,13 +338,13 @@ public class BanHangFromms extends javax.swing.JPanel {
         System.out.println(a + "...." + b);
     }
 
-    HoaDon getFrom(int i) {
+    HoaDon getFrom(int maHD, int TT) {
         HoaDon hd = new HoaDon();
-        getSLTT(i);
-        hd.setMaHd(listHD.get(i).getMaHd());
+        getSLTT(maHD);
+        hd.setMaHd(maHD);
         hd.setTongSL(a);
         hd.setTongTien(b);
-        hd.setTrangThai(listHD.get(i).getTrangThai());
+        hd.setTrangThai(TT);
         return hd;
     }
 
@@ -1064,28 +1080,28 @@ public class BanHangFromms extends javax.swing.JPanel {
 
         } else if (sl.matches("\\d{0,5}")) {
             int c = Integer.parseInt(sl.trim());
-            if (c > 0 && c < getSLS(getMaSach(listCT.get(roww).getMaCTS())) && c > listCT.get(roww).getSoLuong()){
+            if (c > 0 && c < getSLS(getMaSach(listCT.get(roww).getMaCTS())) && c > listCT.get(roww).getSoLuong()) {
                 sD.updateSL((getSLS(getMaSach(listCT.get(roww).getMaCTS())) - c) + listCT.get(roww).getSoLuong(), getMaSach(listCT.get(roww).getMaCTS()));
                 CTSD.updateSL((getSLSCT(listCT.get(roww).getMaCTS()) - c) + listCT.get(roww).getSoLuong(), listCT.get(roww).getMaCTS());
                 System.out.println("Max CTHD" + listCT.get(roww).getMaCTHD());
                 ctD.updateSL2(c, listCT.get(roww).getMaCTHD());
                 LoadDTableHDCT(listHD.get(f).getMaHd());
-                HoaDon hd = getFrom(f);
-                hdD.updateTT(hd);
+//                HoaDon hd = getFrom(f);
+//                hdD.updateTT(hd);
             } else if (c > 0 && c < getSLS(getMaSach(listCT.get(roww).getMaCTS())) && c < listCT.get(roww).getSoLuong()) {
                 sD.updateSL((getSLS(getMaSach(listCT.get(roww).getMaCTS())) + listCT.get(roww).getSoLuong()) - c, getMaSach(listCT.get(roww).getMaCTS()));
                 CTSD.updateSL(getSLSCT(listCT.get(roww).getMaCTS()) + (listCT.get(roww).getSoLuong() - c), listCT.get(roww).getMaCTS());
                 ctD.updateSL2(c, listCT.get(roww).getMaCTHD());
                 LoadDTableHDCT(listHD.get(f).getMaHd());
-                HoaDon hd = getFrom(f);
-                hdD.updateTT(hd);
+//                HoaDon hd = getFrom(f);
+//                hdD.updateTT(hd);
             } else if (c == 0) {
                 CTSD.updateSL(getSLSCT(listCT.get(roww).getMaCTS()) + (listCT.get(roww).getSoLuong() - c), list.get(roww).getMaCTS());
                 sD.updateSL(getSLS(getMaSach(listCT.get(roww).getMaCTS())) + (listCT.get(roww).getSoLuong() - c), getMaSach(listCT.get(roww).getMaCTS()));
                 ctD.updateSL2(c, listCT.get(roww).getMaCTHD());
                 LoadDTableHDCT(listHD.get(f).getMaHd());
-                HoaDon hd = getFrom(f);
-                hdD.updateTT(hd);
+//                HoaDon hd = getFrom(f);
+//                hdD.updateTT(hd);
             } else {
                 utils.MsgBox.alert(this, "Quá số lượng hàng có trong Kho!");
             }
