@@ -22,12 +22,13 @@ import GUI.HomeFrom;
  *
  * @author User
  */
-public class BanHangFromms extends javax.swing.JPanel{
+public class BanHangFromms extends javax.swing.JPanel {
 
     /**
      * Creates new form BanHangFromms
      */
     int t, IconIndex1 = 0, idhang = 0;
+    int q = 0;
     int f = -1;
     int a;
     float b;
@@ -131,21 +132,19 @@ public class BanHangFromms extends javax.swing.JPanel{
 //        }
 //
 //    }
-
     public void addArrayButtonHD() {
+        int i = 0;
         t = listHD.size();
         btnHD = new JButton[t];
-        for (int i = 0; i < t; i++) {
+        for (HoaDon hoaDon : listHD) {
             btnHD[i] = createButton(listHD.get(i).getMaHd() + "");
             btnHD[i].setText("Hoa Đơn " + listHD.get(i).getMaHd());
             btnHD[i].setPreferredSize(new Dimension(100, 100));
             PBody2.add(btnHD[i]);
-            btnHD[i].addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                    System.out.println(ae.getID());
-                }
+            btnHD[i].addActionListener((ActionEvent ae) -> {
+                   System.out.println(hoaDon.getMaHd());
             });
+            i++;
         }
 
     }
@@ -155,19 +154,10 @@ public class BanHangFromms extends javax.swing.JPanel{
         btnhh = new JButton[row];
         for (int i = 0; i < row; i++) {
             btnhh[i] = createButton(list.get(i).getMaCTS() + "");
-        btnhh[i].setText(getTieuDe(list.get(i).getMaSach()));
-        btnhh[i].setPreferredSize(new Dimension(100, 100));
-        Pbody3.add(btnhh[i]);
-        btnhh[i].addActionListener((ActionEvent ae) -> {
-//                    ChiTietHoaDon cthd = _iChiTietHoaDon.getListChiTietHoaDonByMaPhong(maPhongThue);
-//                    ChiTietDichVu ctdv = new ChiTietDichVu();
-//                    ctdv.setMaChiTietDichVu(_iChiTietDichVu.getMaCTDVAuto());
-//                    ctdv.setMaDichVu(dv.getMaDichVu());
-//                    ctdv.setMaHoaDonChiTiet(cthd.getMaHoaDonChiTiet());
-//                    ctdv.setSoLuong(1);
-//                    _iChiTietDichVu.addChiTietDichVu(ctdv);
-//                    fillToDichVuPhong();
-                });
+            btnhh[i].setText(getTieuDe(list.get(i).getMaSach()));
+            btnhh[i].setPreferredSize(new Dimension(100, 100));
+            Pbody3.add(btnhh[i]);
+
         }
     }
 
@@ -204,7 +194,6 @@ public class BanHangFromms extends javax.swing.JPanel{
 //            }
 //        }
 //    }
-
 //    @Override
 //    public void actionPerformed(ActionEvent e) {
 //        String btnIndex = e.getActionCommand();
@@ -237,7 +226,6 @@ public class BanHangFromms extends javax.swing.JPanel{
 //        }
 //
 //    }
-
     int getSLS(String mas) {
         List<Sach> listSach = sD.selectBykey(mas);
         for (Sach sach : listSach) {
@@ -448,6 +436,7 @@ public class BanHangFromms extends javax.swing.JPanel{
         cbbDoTuoi = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -879,6 +868,13 @@ public class BanHangFromms extends javax.swing.JPanel{
             }
         });
 
+        jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -897,6 +893,8 @@ public class BanHangFromms extends javax.swing.JPanel{
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
                             .addComponent(cbbDoTuoi, 0, 224, Short.MAX_VALUE))
+                        .addGap(161, 161, 161)
+                        .addComponent(jButton4)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(21, 21, 21))
         );
@@ -908,7 +906,9 @@ public class BanHangFromms extends javax.swing.JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbbTheLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbbDoTuoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -1064,7 +1064,7 @@ public class BanHangFromms extends javax.swing.JPanel{
 
         } else if (sl.matches("\\d{0,5}")) {
             int c = Integer.parseInt(sl.trim());
-            if (c > 0 && c < getSLS(getMaSach(listCT.get(roww).getMaCTS())) && c > listCT.get(roww).getSoLuong()) {
+            if (c > 0 && c < getSLS(getMaSach(listCT.get(roww).getMaCTS())) && c > listCT.get(roww).getSoLuong()){
                 sD.updateSL((getSLS(getMaSach(listCT.get(roww).getMaCTS())) - c) + listCT.get(roww).getSoLuong(), getMaSach(listCT.get(roww).getMaCTS()));
                 CTSD.updateSL((getSLSCT(listCT.get(roww).getMaCTS()) - c) + listCT.get(roww).getSoLuong(), listCT.get(roww).getMaCTS());
                 System.out.println("Max CTHD" + listCT.get(roww).getMaCTHD());
@@ -1092,7 +1092,6 @@ public class BanHangFromms extends javax.swing.JPanel{
         } else {
             utils.MsgBox.alert(this, "Nhập Không Đúng Định Dạng!");
         }
-
     }//GEN-LAST:event_menuSActionPerformed
 
     private void menuxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuxActionPerformed
@@ -1148,6 +1147,11 @@ public class BanHangFromms extends javax.swing.JPanel{
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Pbody3.removeAll();
+        updateUI();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PBody2;
@@ -1163,6 +1167,7 @@ public class BanHangFromms extends javax.swing.JPanel{
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
