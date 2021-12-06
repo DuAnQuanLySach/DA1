@@ -22,7 +22,7 @@ import GUI.HomeFrom;
  *
  * @author User
  */
-public class BanHangFromms extends javax.swing.JPanel implements ActionListener {
+public class BanHangFromms extends javax.swing.JPanel{
 
     /**
      * Creates new form BanHangFromms
@@ -57,8 +57,8 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         list = CTSD.selecALL();
         listHD = hdD.selectHDChuaTT();
         listkh = khDao.selecALL();
-        addArrayButtonHh();
-        addIcon();
+        addArrayButtonSP();
+//        addIcon();
         addArrayButtonHD();
         LoadCbbKH();
         System.out.println(list.get(4).getMaCTS());
@@ -107,7 +107,8 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         }
     }
     private int row = 0;
-    private JButton[] btn;
+    private JButton[] btnHD;
+    private JButton[] btnhh;
 
     void insertHoaDon(String k) {
 
@@ -115,108 +116,127 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         hdD.insert(h);
     }
 
-    public void addArrayButtonHh() {
-        t = listHD.size();
-        int q = t + 16;
-        btn = new JButton[q];
-        for (int i = 0; i < 16; i++) {
-            btn[i] = createButton(i + "");
-            btn[i].setText("Sản Phẩm" + i);
-            btn[i].setPreferredSize(new Dimension(100, 100));
-            Pbody3.add(btn[i]);
-        }
-
-    }
+//    public void addArrayButtonHh() {
+//        t = listHD.size();
+//        int q = t + 16;
+//        btn = new JButton[q];
+//        for (int i = 0; i < 16; i++) {
+//            btn[i] = createButton(i + "");
+//            btn[i].setText("Sản Phẩm" + i);
+//            btn[i].setPreferredSize(new Dimension(100, 100));
+//            Pbody3.add(btn[i]);
+//            btn[i].addActionListener((ActionEvent ae) -> {
+//                    
+//                });
+//        }
+//
+//    }
 
     public void addArrayButtonHD() {
         t = listHD.size();
-        int q = t + 16;
-        btn = new JButton[q];
-        for (int i = 16; i < q; i++) {
-            btn[i] = createButton(i + "");
-            btn[i].setText("Hoa Đơn " + i);
-            btn[i].setPreferredSize(new Dimension(100, 100));
-            PBody2.add(btn[i]);
+        btnHD = new JButton[t];
+        for (int i = 0; i < t; i++) {
+            btnHD[i] = createButton(listHD.get(i).getMaHd() + "");
+            btnHD[i].setText("Hoa Đơn " + listHD.get(i).getMaHd());
+            btnHD[i].setPreferredSize(new Dimension(100, 100));
+            PBody2.add(btnHD[i]);
+            btnHD[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    System.out.println(ae.getID());
+                }
+            });
         }
 
     }
 
-    public void addArrayButtonHD2() {
-        int q = t + 16;
-        btn = new JButton[q];
-        btn[q - 1] = createButton((q - 1) + "");
-        btn[q - 1].setText("Hoa Đơn " + (q - 1));
-        btn[q - 1].setPreferredSize(new Dimension(100, 100));
-        PBody2.add(btn[q - 1]);
+    public void addArrayButtonSP() {
+        row = list.size();
+        btnhh = new JButton[row];
+        for (int i = 0; i < row; i++) {
+            btnhh[i] = createButton(list.get(i).getMaCTS() + "");
+        btnhh[i].setText(getTieuDe(list.get(i).getMaSach()));
+        btnhh[i].setPreferredSize(new Dimension(100, 100));
+        Pbody3.add(btnhh[i]);
+        btnhh[i].addActionListener((ActionEvent ae) -> {
+//                    ChiTietHoaDon cthd = _iChiTietHoaDon.getListChiTietHoaDonByMaPhong(maPhongThue);
+//                    ChiTietDichVu ctdv = new ChiTietDichVu();
+//                    ctdv.setMaChiTietDichVu(_iChiTietDichVu.getMaCTDVAuto());
+//                    ctdv.setMaDichVu(dv.getMaDichVu());
+//                    ctdv.setMaHoaDonChiTiet(cthd.getMaHoaDonChiTiet());
+//                    ctdv.setSoLuong(1);
+//                    _iChiTietDichVu.addChiTietDichVu(ctdv);
+//                    fillToDichVuPhong();
+                });
+        }
     }
 
     public JButton createButton(String buttonName) {
         JButton btn = new JButton(buttonName);
-        btn.addActionListener(this);
         return btn;
     }
 
-    void addIcon() {
-        y = list.size();
-        if (y >= 16) {
-            if (IconIndex1 + 16 <= list.size()) {
-                for (int i = IconIndex1; i < IconIndex1 + 16; i++) {
-                    for (int j = 0; j < 16; j++) {
-                        btn[j].setIcon(utils.XImage.readLogo(list.get(j).getHinh()));
-                    }
-                }
-            }else if (IconIndex1 + 16 > list.size() || IconIndex1 > list.size()) {
-                    for (int i = IconIndex1; i < y; i++) {
-                        for (int j = 0; j < 16; j++) {
-                            btn[j].setIcon(utils.XImage.readLogo(list.get(i).getHinh()));
-                        }
-                    }
-                    for (int i = y; i < 16; i++) {
-                        btn[i].setEnabled(false);
-                    }
-                }
-        } else if (y < 16) {
-            for (int i = 0; i < y; i++) {
-                btn[i].setIcon(utils.XImage.readLogo(list.get(i).getHinh()));
-            }
-            for (int i = y; i < 16; i++) {
-                btn[i].setEnabled(false);
-            }
-        }
-    }
+//    void addIcon() {
+//        y = list.size();
+//        if (y >= 16) {
+//            if (IconIndex1 + 16 <= list.size()) {
+//                for (int i = IconIndex1; i < IconIndex1 + 16; i++) {
+//                    for (int j = 0; j < 16; j++) {
+//                        btn[j].setIcon(utils.XImage.readLogo(list.get(j).getHinh()));
+//                    }
+//                }
+//            }else if (IconIndex1 + 16 > list.size() || IconIndex1 > list.size()) {
+//                    for (int i = IconIndex1; i < y; i++) {
+//                        for (int j = 0; j < 16; j++) {
+//                            btn[j].setIcon(utils.XImage.readLogo(list.get(i).getHinh()));
+//                        }
+//                    }
+//                    for (int i = y; i < 16; i++) {
+//                        btn[i].setEnabled(false);
+//                    }
+//                }
+//        } else if (y < 16) {
+//            for (int i = 0; i < y; i++) {
+//                btn[i].setIcon(utils.XImage.readLogo(list.get(i).getHinh()));
+//            }
+//            for (int i = y; i < 16; i++) {
+//                btn[i].setEnabled(false);
+//            }
+//        }
+//    }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String btnIndex = e.getActionCommand();
-        String s1 = btnIndex.substring(8);
-        x = Integer.parseInt(s1);
-        if (x > 15) {
-            for (int i = 0; i < t; i++) {
-                if (x == 16 + i) {
-                    f = i;
-                    row = x;
-                    HoaDon h = getFrom(i);
-                    Setfrom(h);
-                    LoadDTableHDCT(listHD.get(i).getMaHd());
-                    break;
-                }
-            }
-        } else if (x < 15) {
-            if (f < 0) {
-                utils.MsgBox.alert(this, "Mời bạn chọn hóa đơn");
-            } else {
-                for (int i = 0; i < 16; i++) {
-                    if (x == i) {
-                        idhang = i + IconIndex1;
-                        list = CTSD.selecALL();
-                        checkh();
-                    }
-                }
-
-            }
-        }
-
-    }
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        String btnIndex = e.getActionCommand();
+//        String s1 = btnIndex.substring(8);
+//        x = Integer.parseInt(s1);
+//        if (x > 15) {
+//            for (int i = 0; i < t; i++) {
+//                if (x == 16 + i) {
+//                    f = i;
+//                    row = x;
+//                    HoaDon h = getFrom(i);
+//                    Setfrom(h);
+//                    LoadDTableHDCT(listHD.get(i).getMaHd());
+//                    break;
+//                }
+//            }
+//        } else if (x < 15) {
+//            if (f < 0) {
+//                utils.MsgBox.alert(this, "Mời bạn chọn hóa đơn");
+//            } else {
+//                for (int i = 0; i < 16; i++) {
+//                    if (x == i) {
+//                        idhang = i + IconIndex1;
+//                        list = CTSD.selecALL();
+//                        checkh();
+//                    }
+//                }
+//
+//            }
+//        }
+//
+//    }
 
     int getSLS(String mas) {
         List<Sach> listSach = sD.selectBykey(mas);
@@ -379,6 +399,7 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         menuS = new javax.swing.JMenuItem();
         menux = new javax.swing.JMenuItem();
         s = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
         Pbody3 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -456,19 +477,20 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         s.setPreferredSize(new java.awt.Dimension(1345, 300));
 
         Pbody3.setLayout(new java.awt.GridLayout(3, 0));
+        jScrollPane4.setViewportView(Pbody3);
 
         javax.swing.GroupLayout sLayout = new javax.swing.GroupLayout(s);
         s.setLayout(sLayout);
         sLayout.setHorizontalGroup(
             sLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pbody3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1535, Short.MAX_VALUE)
+            .addGroup(sLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         sLayout.setVerticalGroup(
             sLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sLayout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(Pbody3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         add(s, java.awt.BorderLayout.PAGE_END);
@@ -921,7 +943,7 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         insertHoaDon(k);
         listHD = hdD.selectHDChuaTT();
         t = listHD.size();
-        addArrayButtonHD2();
+//        addArrayButtonHD2();
         updateUI();
     }//GEN-LAST:event_btnTaoHDActionPerformed
 
@@ -1092,7 +1114,7 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         for (TheLoaiSach tls : listTLS) {
             if (tls.getMaTL() == listTL.get(i).getMaTL()) {
                 list = CTSD.selectByTL(tls.getMaSach());
-                addIcon();
+//                addIcon();
                 break;
             }
         }
@@ -1112,7 +1134,7 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         if (IconIndex1 >= 16) {
             k = IconIndex1 - 16;
             IconIndex1 = k;
-            addIcon();
+//            addIcon();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1121,7 +1143,7 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
         if (IconIndex1 >= 16) {
             k = IconIndex1 - 16;
             IconIndex1 = k;
-            addIcon();
+//            addIcon();
             updateUI();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -1166,6 +1188,7 @@ public class BanHangFromms extends javax.swing.JPanel implements ActionListener 
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblKh;
     private javax.swing.JLabel lbldongho;
