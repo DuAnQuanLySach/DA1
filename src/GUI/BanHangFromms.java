@@ -347,7 +347,7 @@ public class BanHangFromms extends javax.swing.JPanel {
         hd.setGhiChu(k);
         hd.setTrangThai(1);
         return hd;
-    }
+    }  
 
     HoaDon getUpdateFrom(int i) {
         HoaDon hd = new HoaDon();
@@ -471,6 +471,7 @@ public class BanHangFromms extends javax.swing.JPanel {
 
         s.setPreferredSize(new java.awt.Dimension(1345, 300));
 
+        Pbody3.setBackground(new java.awt.Color(0, 153, 255));
         Pbody3.setLayout(new java.awt.GridLayout(3, 0));
         jScrollPane4.setViewportView(Pbody3);
 
@@ -478,10 +479,7 @@ public class BanHangFromms extends javax.swing.JPanel {
         s.setLayout(sLayout);
         sLayout.setHorizontalGroup(
             sLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1545, Short.MAX_VALUE)
         );
         sLayout.setVerticalGroup(
             sLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,6 +487,8 @@ public class BanHangFromms extends javax.swing.JPanel {
         );
 
         add(s, java.awt.BorderLayout.PAGE_END);
+
+        jPanel4.setBackground(new java.awt.Color(0, 153, 255));
 
         btnTT.setBackground(new java.awt.Color(0, 204, 0));
         btnTT.setText("Thanh Toán");
@@ -752,6 +752,8 @@ public class BanHangFromms extends javax.swing.JPanel {
 
         add(jPanel15, java.awt.BorderLayout.LINE_END);
 
+        jPanel5.setBackground(new java.awt.Color(0, 153, 255));
+
         btnTaoHD.setText("Tạo Hóa đơn");
         btnTaoHD.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -781,6 +783,7 @@ public class BanHangFromms extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        PBody2.setBackground(new java.awt.Color(51, 153, 255));
         PBody2.setLayout(new java.awt.GridLayout(10, 2));
         jScrollPane2.setViewportView(PBody2);
 
@@ -814,6 +817,7 @@ public class BanHangFromms extends javax.swing.JPanel {
 
         add(jPanel24, java.awt.BorderLayout.LINE_START);
 
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 570));
 
         Tblcth.setModel(new javax.swing.table.DefaultTableModel(
@@ -850,6 +854,8 @@ public class BanHangFromms extends javax.swing.JPanel {
             .addComponent(jTextField1)
         );
 
+        jPanel6.setBackground(new java.awt.Color(0, 153, 255));
+
         cbbTheLoai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cbbTheLoaiMouseClicked(evt);
@@ -876,7 +882,7 @@ public class BanHangFromms extends javax.swing.JPanel {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(cbbDoTuoi, 0, 224, Short.MAX_VALUE))
-                .addGap(21, 655, Short.MAX_VALUE))
+                .addGap(21, 665, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -896,7 +902,7 @@ public class BanHangFromms extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

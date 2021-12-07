@@ -35,12 +35,12 @@ public class HomeFrom extends javax.swing.JFrame {
         panelBody.add(new BanHangFromms());
     }
     private void execute() {
-        ImageIcon iconStaff = new ImageIcon("C:\\Users\\ADMIN\\Downloads\\3_PL1\\src\\menu\\user.png");
-        ImageIcon iconSetting = new ImageIcon("C:\\Users\\ADMIN\\Downloads\\3_PL1\\src\\menu\\setting.png");
-        ImageIcon iconDatabase = new ImageIcon("C:\\Users\\ADMIN\\Downloads\\3_PL1\\src\\menu\\database.png");
-        ImageIcon iconMessage = new ImageIcon("C:\\Users\\ADMIN\\Downloads\\3_PL1\\src\\menu\\message.png");
-        ImageIcon iconSubMenu = new ImageIcon("C:\\Users\\ADMIN\\Downloads\\3_PL1\\src\\menu\\subMenu.png");
-        ImageIcon iconNext = new ImageIcon("C:\\Users\\ADMIN\\Downloads\\3_PL1\\src\\menu\\next.png");
+        ImageIcon iconStaff = new ImageIcon("D:\\test menu\\src\\menu\\user.png");
+        ImageIcon iconSetting = new ImageIcon("D:\\test menu\\src\\menu\\setting.png");
+        ImageIcon iconDatabase = new ImageIcon("D:\\test menu\\src\\menu\\database.png");
+        ImageIcon iconMessage = new ImageIcon("D:\\test menu\\src\\menu\\message.png");
+        ImageIcon iconSubMenu = new ImageIcon("\"D:\\\\test menu\\\\src\\\\menu\\\\subMenu.png\"");
+        ImageIcon iconNext = new ImageIcon("D:\\test menu\\src\\menu\\next.png");
         //Tạo Menu Quản Lý Sách
         MenuItem menuStaff1 = new MenuItem(iconSubMenu, "Sách và Chi Tiết Sách", new ActionListener() {
             @Override
