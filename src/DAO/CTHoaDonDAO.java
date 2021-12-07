@@ -13,7 +13,7 @@ public class CTHoaDonDAO extends DAO<CTHoaDon, Integer>{
     String UPDATE_SQL = "UPDATE CTHoaDon SET MACTS=?, MAHD=?, GIABAN=?, SL=?, TIEUDE=?,TRANGTHAI=? WHERE MACTHD=? ";
     String UPDATESL_SQL = "UPDATE CTHoaDon SET SL=? WHERE MACTHD=? ";
     String DELETE_SQL = "DELETE FROM CTHoaDon WHERE MACTHD=? ";
-    String SELECT_ALL_SQL = "SELECT * FROM CTHoaDon";
+    String SELECT_ALL_SQL = "SELECT * FROM CTHoaDon where TRANGTHAI=0";
     String SELECt_BY_ID_SQL = "SELECT* from CTHoaDon where MAHD= ? AND TRANGTHAI=0";
 
     @Override

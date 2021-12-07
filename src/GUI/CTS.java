@@ -840,7 +840,7 @@ public class CTS extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbVTActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        if (utils.XHeper.checkNullText(txtGia) && XHeper.checkHocPhi(txtGia) && utils.XHeper.checkNullText(txtSLS) && XHeper.checkNunBer(txtSLS)) {
+        if (utils.XHeper.checkNullText(txtGia) && XHeper.checkTien(txtGia) && utils.XHeper.checkNullText(txtSLS) && XHeper.checkNunBer(txtSLS)) {
             Updatects();
             editCTS();
             LoadQLCTS();
@@ -890,7 +890,7 @@ public class CTS extends javax.swing.JPanel {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if (utils.XHeper.checkNullText(txtGia) && XHeper.checkHocPhi(txtGia) && utils.XHeper.checkNullText(txtSLS) && XHeper.checkNunBer(txtSLS)&& utils.XHeper.checkNullText(txtSoTrang) && XHeper.checkNunBer(txtSoTrang)) {
+        if (utils.XHeper.checkNullText(txtGia) && XHeper.checkTien(txtGia) && utils.XHeper.checkNullText(txtSLS) && XHeper.checkNunBer(txtSLS)&& utils.XHeper.checkNullText(txtSoTrang) && XHeper.checkNunBer(txtSoTrang)) {
             insertctS();
             editCTS();
             LoadQLCTS();

@@ -52,7 +52,7 @@ public class TheLoaiForm extends javax.swing.JPanel {
     }
 
     private void setFormTL(TheLoai tl) {
-        txtMaTL.setText(tl.getMaTL());
+        txtMaTL.setText(tl.getMaTL()+"");
         txtTenTL.setText(tl.getTenTL());
         txtMaVt.setText(tl.getMaVT());
         if (tl.getTrangThai() == 1) {
@@ -64,7 +64,7 @@ public class TheLoaiForm extends javax.swing.JPanel {
 
     private TheLoai getFormTL() {
         TheLoai tl = new TheLoai();
-        tl.setMaTL(txtMaTL.getText());
+        tl.setMaTL(Integer.parseInt(txtMaTL.getText()));
         tl.setTenTL(txtTenTL.getText());
         tl.setMaVT(txtMaVt.getText());
         if (rdbHDTL.isSelected()) {
@@ -89,7 +89,7 @@ public class TheLoaiForm extends javax.swing.JPanel {
         TheLoaiSach tls = new TheLoaiSach();
         String mas = (String) cbbMaS.getSelectedItem();
         tls.setMaTLS(txtMaTLS.getText());
-        tls.setMaTL(txtMaTL.getText());
+        tls.setMaTL(Integer.parseInt(txtMaTL.getText()));
         tls.setMaSach(mas);
         tls.setTenTL(txtTenTL.getText()); 
         if (rdbHDTLS.isSelected()) {

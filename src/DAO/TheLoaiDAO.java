@@ -51,7 +51,7 @@ public class TheLoaiDAO extends DAO<TheLoai, String> {
             ResultSet rs = JDBCHelper.jdbcHelper.query(sql, args);
             while (rs.next()) {
                 TheLoai entity = new TheLoai();
-                entity.setMaTL(rs.getString(1));
+                entity.setMaTL(rs.getInt(1));
                 entity.setTenTL(rs.getString(2));
                 entity.setMaVT(rs.getString(3));
                 entity.setTrangThai(rs.getInt(4));

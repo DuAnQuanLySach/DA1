@@ -63,7 +63,7 @@ public class TheLoaiSachDAO extends DAO<TheLoaiSach, String> {
             while (rs.next()) {
                 TheLoaiSach entity = new TheLoaiSach();
                 entity.setMaTLS(rs.getString(1));
-                entity.setMaTL(rs.getString(2));
+                entity.setMaTL(rs.getInt(2));
                 entity.setMaSach(rs.getString(3));
                 entity.setTenTL(rs.getString(4));
 

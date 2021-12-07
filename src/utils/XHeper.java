@@ -220,7 +220,7 @@ public class XHeper {
     }
 
     //học phí là float >0
-    public static boolean checkHocPhi(JTextField txt) {
+    public static boolean checkTien(JTextField txt) {
         txt.setBackground(white);
         try {
             float hp = Float.parseFloat(txt.getText());

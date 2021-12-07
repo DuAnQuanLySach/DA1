@@ -6,7 +6,7 @@ package Entity;
  * @author ADMIN
  */
 public class TheLoai {
-    private String MaTL;
+    private int MaTL;
     private String TenTL;
     private String MaVT;
     private int TrangThai;
@@ -14,18 +14,18 @@ public class TheLoai {
     public TheLoai() {
     }
 
-    public TheLoai(String MaTL, String TenTL, String MaVT, int TrangThai) {
+    public TheLoai(int MaTL, String TenTL, String MaVT, int TrangThai) {
         this.MaTL = MaTL;
         this.TenTL = TenTL;
         this.MaVT = MaVT;
         this.TrangThai = TrangThai;
     }
 
-    public String getMaTL() {
+    public int getMaTL() {
         return MaTL;
     }
 
-    public void setMaTL(String MaTL) {
+    public void setMaTL(int MaTL) {
         this.MaTL = MaTL;
     }
 
@@ -53,6 +53,5 @@ public class TheLoai {
         this.TrangThai = TrangThai;
     }
 
-    
     
 }
