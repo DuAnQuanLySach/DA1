@@ -53,7 +53,7 @@ public class HinhThucLoaiBia extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(85, 155, 247));
 
         rdbhd.setText("ĐangHD");
         rdbhd.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +92,7 @@ public class HinhThucLoaiBia extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(90, 165, 243));
 
         jLabel14.setText("Loại Bìa");
 
