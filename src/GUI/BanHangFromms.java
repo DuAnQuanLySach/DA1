@@ -52,7 +52,7 @@ public class BanHangFromms extends javax.swing.JPanel {
     List<KhachHang> listkh;
 
     public BanHangFromms() {
-        this.k = "Người tạo" + utils.Auth.user + "/n";
+        this.k = "Người tạo" + utils.Auth.user;
         initComponents();
         listS = sD.selecALL();
         list = CTSD.selecALL();
@@ -1103,7 +1103,7 @@ public class BanHangFromms extends javax.swing.JPanel {
         }else if (Float.parseFloat(txtThanhToan.getText()) < Float.parseFloat(txtKhacPhaiTra.getText())) {
             txtTienThua.setText("Khách trả thiểu: "+(Float.parseFloat(txtKhacPhaiTra.getText())-Float.parseFloat(txtThanhToan.getText())) );
         }else{
-            txtTienThua.setText((Float.parseFloat(txtKhacPhaiTra.getText())-Float.parseFloat(txtThanhToan.getText())));
+            txtTienThua.setText((Float.parseFloat(txtKhacPhaiTra.getText())-Float.parseFloat(txtThanhToan.getText()))+"VND");
         }
     }//GEN-LAST:event_txtThanhToanActionPerformed
 

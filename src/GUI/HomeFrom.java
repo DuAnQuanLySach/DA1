@@ -201,8 +201,25 @@ public class HomeFrom extends javax.swing.JFrame {
                 } 
             }
         });
+          MenuItem menuQLHD = new MenuItem(iconNext, "QL Hóa Đơn", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if (index == 1) {
+                  panelBody.removeAll();
+                    panelBody.add(new QLHoaDon());
+                    panelBody.repaint();
+                    panelBody.revalidate();
+                } else {
+                    index = 1;
+                    panelBody.removeAll();
+                    panelBody.add(new QLHoaDon());
+                    panelBody.repaint();
+                    panelBody.revalidate();
+                }
+            }
+        });
         MenuItem menuQLSach = new MenuItem(iconSetting, "Quản Lý Sách", null, menuStaff1, menuStaff2,menuStaff3, menuStaff4, menuNNDT,menuHTLB);
-        MenuItem menuQLGD = new MenuItem(iconDatabase, "Quản Lý Giao Dịch", null, menuBanHang, menuNhanHang, menuDoanhThu);
+        MenuItem menuQLGD = new MenuItem(iconDatabase, "Quản Lý Giao Dịch", null, menuBanHang, menuNhanHang, menuDoanhThu,menuQLHD);
         MenuItem menuQLNV = new MenuItem(iconDatabase, "Quản Lý Nhân viên", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -237,6 +254,7 @@ public class HomeFrom extends javax.swing.JFrame {
                 }
             }
         });
+      
 
         addMenu(menuHome, menuQLSach, menuQLGD, menuQLNV, menuQLKH);
     }
